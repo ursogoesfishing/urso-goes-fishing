@@ -3,87 +3,793 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urso Goes Fishing</title>
+
+  <title>Urso Goes Fishing | Spinning in mare, test reali e cappotti sinceri</title>
+
+  <meta name="description" content="Urso Goes Fishing è il progetto di Luigi Urso dedicato alla pesca in mare: spinning, predatori mediterranei, attrezzatura testata sul campo, cappotti sinceri e idee discutibili." />
+
   <style>
+    :root {
+      --bg: #f3efe5;
+      --text: #111111;
+      --muted: #5f5a50;
+      --dark: #101820;
+      --accent: #0f766e;
+      --accent-dark: #0b4f4a;
+      --card: #ffffff;
+      --border: rgba(17, 17, 17, 0.12);
+      --shadow: 0 16px 50px rgba(0, 0, 0, 0.10);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f2ea;
-      color: #111;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-    }
-
-    h2 {
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .buttons {
-      margin-top: 35px;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
     }
 
     a {
-      color: #111;
+      color: inherit;
       text-decoration: none;
-      border: 2px solid #111;
-      padding: 12px 18px;
-      border-radius: 999px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(243, 239, 229, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border: 3px solid var(--text);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .brand span {
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
       font-weight: 700;
+      color: var(--muted);
     }
 
-    a:hover {
-      background: #111;
-      color: #f5f2ea;
+    .nav-links a:hover {
+      color: var(--text);
     }
 
-    .email {
-      margin-top: 40px;
+    .menu-button {
+      display: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 92px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 24px 0 0;
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 2px solid var(--text);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button.primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .button.secondary:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 32px;
+      padding: 28px;
+      min-height: 460px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15,118,110,0.55), transparent 65%);
+      right: -80px;
+      top: -90px;
+    }
+
+    .big-symbol {
+      position: relative;
+      z-index: 1;
+      width: 150px;
+      height: 150px;
+      border: 12px solid #fff;
+      border-radius: 42px;
+      display: grid;
+      place-items: center;
+      font-size: 78px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .hero-card h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,0.76);
       font-size: 16px;
-      opacity: 0.8;
+      margin: 16px 0 0;
+    }
+
+    section {
+      padding: 78px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      margin: 18px 0 0;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .dark-section {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .dark-section .section-head p,
+    .dark-section .card p {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .dark-section .card {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .formats {
+      display: grid;
+      gap: 14px;
+    }
+
+    .format-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .format-row:last-child {
+      border-bottom: 0;
+    }
+
+    .format-row strong {
+      font-size: 18px;
+    }
+
+    .format-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .collab-box {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 32px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .collab-box h2 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+    }
+
+    .collab-box p {
+      margin: 14px 0 0;
+      color: rgba(255,255,255,0.82);
+      font-size: 17px;
+    }
+
+    .collab-box .button {
+      border-color: #fff;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .collab-box .button:hover {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 44px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 26px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 14px;
+      font-weight: 800;
+    }
+
+    .socials a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        padding-top: 62px;
+      }
+
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 360px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .format-row {
+        grid-template-columns: 1fr;
+      }
+
+      .collab-box {
+        grid-template-columns: 1fr;
+      }
+
+      .collab-box .button {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(var(--max), calc(100% - 26px));
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .brand span {
+        font-size: 15px;
+      }
+
+      .mark {
+        width: 38px;
+        height: 38px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main class="container">
-    <h1>Urso Goes Fishing</h1>
-    <h2>Spinning in mare, test reali e cappotti sinceri.</h2>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Urso Goes Fishing home">
+        <div class="mark">U</div>
+        <span>Urso Goes Fishing</span>
+      </a>
 
-    <p>
-      Luigi Urso pesca in mare tra predatori mediterranei,
-      attrezzatura testata sul campo, idee discutibili e zero fuffa.
-    </p>
+      <button class="menu-button" id="menuButton" aria-label="Apri menu">
+        Menu
+      </button>
 
-    <div class="buttons">
-      <a href="#" target="_blank">YouTube</a>
-      <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">TikTok</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">Chi siamo</a>
+        <a href="#content">Categorie</a>
+        <a href="#formats">Format</a>
+        <a href="#collab">Collaborazioni</a>
+        <a href="#contact">Contatti</a>
+      </nav>
     </div>
+  </header>
 
-    <p class="email">
-      Collaborazioni: ursogoesfishing@gmail.com
-    </p>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Spinning in mare · Test reali · Cappotti sinceri</div>
+
+          <h1>Urso Goes Fishing</h1>
+
+          <p>
+            Luigi Urso pesca in mare tra predatori mediterranei, attrezzatura testata
+            sul campo, idee discutibili e zero fuffa.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="https://www.youtube.com/" target="_blank" rel="noopener">Guarda su YouTube</a>
+            <a class="button secondary" href="mailto:ursogoesfishing@gmail.com">Contattaci</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="big-symbol">U</div>
+
+          <div>
+            <h2>Fishing, but tested for real.</h2>
+            <p>
+              Uscite vere, setup accessibili, artificiali, zaini, spot letti senza rivelarli,
+              errori, cappotti e prove pratiche davanti al mare.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>Non il solito canale pesca.</h2>
+          <p>
+            Urso Goes Fishing nasce per raccontare la pesca in mare in modo pratico,
+            leggero e onesto: niente spot precisi, niente fuffa, niente recensioni finte.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="number">01</div>
+            <h3>Pesca reale</h3>
+            <p>
+              Uscite vere, condizioni vere, errori veri. Se va male, diventa comunque
+              una lezione utile.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="number">02</div>
+            <h3>Test sul campo</h3>
+            <p>
+              Attrezzatura, artificiali, zaini e setup provati davanti al mare, non solo
+              appoggiati su un tavolo.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="number">03</div>
+            <h3>Cappotti sinceri</h3>
+            <p>
+              Non sempre si prende. L’importante è capire perché, cosa cambiare e cosa
+              evitare la prossima volta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="content" class="dark-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Categorie del canale.</h2>
+          <p>
+            Contenuti pensati per chi vuole iniziare o migliorare nello spinning in mare,
+            senza buttare soldi in attrezzatura inutile.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Spinning in mare</h3>
+            <p>
+              Serra, barracuda, spigola, leccia e predatori mediterranei da cercare
+              con artificiali e ragionamento.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Gear & setup</h3>
+            <p>
+              Canna, mulinello, trecciato, finale, snap, pinze, zaino e tutto quello che
+              ha senso portare davvero.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Spot senza coordinate</h3>
+            <p>
+              Non riveliamo punti precisi. Parliamo di vento, schiuma, fondale, accessi,
+              sicurezza e lettura del mare.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Artificiali</h3>
+            <p>
+              Long jerk, minnow, topwater, metal jig, gomme e scelte semplici per
+              situazioni reali.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Challenge</h3>
+            <p>
+              Una sola esca, kit economici, mare sbagliato, spot improbabili e altre
+              idee discutibili da testare.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Fishing lifestyle</h3>
+            <p>
+              Mare, preparazione, attrezzatura, ordine, workshop, viaggi brevi e tutto
+              il mondo intorno alla pesca.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formats">
+      <div class="container">
+        <div class="section-head">
+          <h2>Format principali.</h2>
+          <p>
+            Ogni video parte da una domanda chiara: funziona davvero? Ha senso comprarlo?
+            Vale la pena uscire con queste condizioni?
+          </p>
+        </div>
+
+        <div class="formats">
+          <div class="format-row">
+            <strong>Kit economico</strong>
+            <p>
+              Test di canne, mulinelli e setup accessibili per capire il minimo sensato
+              per iniziare senza comprare roba inutile.
+            </p>
+          </div>
+
+          <div class="format-row">
+            <strong>Una sola esca</strong>
+            <p>
+              Luigi sceglie un artificiale e deve usarlo davvero. Se funziona bene,
+              se non funziona almeno capiamo perché.
+            </p>
+          </div>
+
+          <div class="format-row">
+            <strong>Mare sbagliato?</strong>
+            <p>
+              Uscite con condizioni dubbie: vento, onde, acqua sporca, poca attività.
+              Errore o occasione?
+            </p>
+          </div>
+
+          <div class="format-row">
+            <strong>Dentro lo zaino</strong>
+            <p>
+              Cosa portare davvero a spinning in mare: pochi oggetti, scelti bene,
+              usati sul campo.
+            </p>
+          </div>
+
+          <div class="format-row">
+            <strong>Cappotto tecnico</strong>
+            <p>
+              Quando non si prende niente, il video non è buttato: si analizzano errori,
+              condizioni e scelte sbagliate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collab">
+      <div class="container">
+        <div class="collab-box">
+          <div>
+            <h2>Collaborazioni.</h2>
+            <p>
+              Urso Goes Fishing è disponibile per test prodotto, contenuti UGC,
+              foto/video, Shorts/Reels e integrazioni YouTube per brand, negozi e realtà
+              legate alla pesca sportiva.
+            </p>
+          </div>
+
+          <a class="button" href="mailto:ursogoesfishing@gmail.com">Scrivici</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contatti.</h2>
+          <p>
+            Per collaborazioni, test attrezzatura, contenuti per brand o proposte legate
+            al canale.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:ursogoesfishing@gmail.com">ursogoesfishing@gmail.com</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Social</h3>
+            <p>
+              YouTube · Instagram · TikTok<br>
+              Handle consigliato: <strong>@UrsoGoesFishing</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        © <span id="year"></span> Urso Goes Fishing. All rights reserved.
+      </div>
+
+      <div class="socials">
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
